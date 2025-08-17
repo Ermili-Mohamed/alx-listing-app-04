@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { Input } from "@/components/ui/input"; // Replace if not using UI library
-import { Button } from "@/components/ui/button";
 
 const categories = ["Rooms", "Mansion", "Countryside", "Beachfront", "City View"];
 
@@ -13,7 +11,7 @@ const Header: React.FC = () => {
         <div className="text-2xl font-bold">🏠 ListingApp</div>
 
         <div className="flex-1 px-4">
-          <Input
+          <input
             type="text"
             placeholder="Search properties..."
             className="w-full border rounded-lg px-4 py-2"
@@ -21,8 +19,12 @@ const Header: React.FC = () => {
         </div>
 
         <div className="flex gap-4">
-          <Button variant="ghost">Sign In</Button>
-          <Button>Sign Up</Button>
+          <button className="px-4 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md transition-colors">
+            Sign In
+          </button>
+          <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+            Sign Up
+          </button>
         </div>
       </div>
 
