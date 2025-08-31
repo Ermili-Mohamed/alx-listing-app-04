@@ -1,11 +1,14 @@
 import React from 'react';
+import Link from 'next/link';
 import { PropertyProps } from '@/interfaces';
+import { ReviewSection } from './index';
 
 interface PropertyDetailProps {
  property: PropertyProps;
+ propertyId?: string;
 }
 
-const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
+const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, propertyId }) => {
  const { name, address, rating, category, price, offers, image, discount } = property;
 
  return (
@@ -14,9 +17,9 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
     {/* Breadcrumb */}
     <nav className="mb-8">
      <ol className="flex items-center space-x-2 text-sm text-gray-600">
-      <li><a href="/" className="hover:text-blue-600">Home</a></li>
+      <li><Link href="/" className="hover:text-blue-600">Home</Link></li>
       <li>/</li>
-      <li><a href="/properties" className="hover:text-blue-600">Properties</a></li>
+      <li><Link href="/properties" className="hover:text-blue-600">Properties</Link></li>
       <li>/</li>
       <li className="text-gray-900 font-medium">{name}</li>
      </ol>
@@ -109,12 +112,12 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
        <p className="text-gray-600 leading-relaxed">
         Experience the perfect blend of luxury and comfort in this stunning {category.join(', ').toLowerCase()} property.
         Located in the heart of {address.city}, this accommodation offers everything you need for an unforgettable stay.
-        With {offers.bed.toLowerCase()} and {offers.shower.toLowerCase()}, it's perfect for {offers.occupants.toLowerCase()}.
+        With {offers.bed.toLowerCase()} and {offers.shower.toLowerCase()}, it&apos;s perfect for {offers.occupants.toLowerCase()}.
        </p>
       </div>
 
       {/* Amenities */}
-      <div className="bg-white rounded-lg p-6">
+      <div className="bg-white rounded-lg p-6 mb-6">
        <h3 className="text-lg font-semibold text-gray-800 mb-4">Amenities</h3>
        <div className="grid grid-cols-2 gap-4">
         <div className="flex items-center">
@@ -144,6 +147,11 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
        </div>
       </div>
      </div>
+    </div>
+
+    {/* Reviews Section - Full Width */}
+    <div className="mt-8">
+     <ReviewSection propertyId={propertyId || "0"} />
     </div>
    </div>
   </div>

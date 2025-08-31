@@ -86,5 +86,5 @@ export default function PropertyDetailPage() {
   );
  }
 
- return <PropertyDetail property={property} />;
+ return <PropertyDetail property={property} propertyId={id as string} />;
 }
