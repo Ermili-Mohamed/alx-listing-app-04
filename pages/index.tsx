@@ -83,7 +83,7 @@ export default function Home() {
         {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {properties.map((property, index) => (
-            <PropertyCard key={index} property={property} />
+            <PropertyCard key={index} property={property} index={index} />
           ))}
         </div>
 

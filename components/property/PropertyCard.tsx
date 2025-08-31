@@ -1,15 +1,25 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { PropertyProps } from '@/interfaces';
 
 interface PropertyCardProps {
  property: PropertyProps;
+ index: number;
 }
 
-const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
+const PropertyCard: React.FC<PropertyCardProps> = ({ property, index }) => {
+ const router = useRouter();
  const { name, address, rating, category, price, offers, image, discount } = property;
 
+ const handleCardClick = () => {
+  router.push(`/property/${index}`);
+ };
+
  return (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+  <div
+   className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+   onClick={handleCardClick}
+  >
    {/* Property Image */}
    <div className="relative">
     <img
